@@ -4,8 +4,24 @@
         <servlet-name>Servlet</servlet-name>
         <servlet-class>servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>UserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AfficherUserServlet</servlet-name>
+        <servlet-class>.AfficherUserServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
         <url-pattern>/Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/UserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AfficherUserServlet</servlet-name>
+        <url-pattern>/AfficherUserServlet</url-pattern>
     </servlet-mapping>
 </web-app>
