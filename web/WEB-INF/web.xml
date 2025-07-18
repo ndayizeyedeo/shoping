@@ -12,6 +12,30 @@
         <servlet-name>AfficherUserServlet</servlet-name>
         <servlet-class>.AfficherUserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListUser</servlet-name>
+        <servlet-class>ListUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AffiUsersServlet</servlet-name>
+        <servlet-class>AffiUsersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListUtilisateurServlet</servlet-name>
+        <servlet-class>ListUtilisateurServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListeUtilisateuresServlet</servlet-name>
+        <servlet-class>ListeUtilisateuresServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SupprimerServlet</servlet-name>
+        <servlet-class>SupprimerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>modifierUtilisateursServlet</servlet-name>
+        <servlet-class>modifierUtilisateurServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
         <url-pattern>/Servlet</url-pattern>
@@ -23,5 +47,29 @@
     <servlet-mapping>
         <servlet-name>AfficherUserServlet</servlet-name>
         <url-pattern>/AfficherUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListUser</servlet-name>
+        <url-pattern>/ListUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AffiUsersServlet</servlet-name>
+        <url-pattern>/AffiUsersServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListUtilisateurServlet</servlet-name>
+        <url-pattern>/ListUtilisateurServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListeUtilisateuresServlet</servlet-name>
+        <url-pattern>/ListeUtilisateuresServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SupprimerServlet</servlet-name>
+        <url-pattern>/SupprimerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>modifierUtilisateursServlet</servlet-name>
+        <url-pattern>/modifierUtilisateursServlet</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -1,5 +1,5 @@
-<%@page import="models.User"%>
-<%@ page import="java.util.List" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.*" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -34,31 +34,51 @@
     </tr>
 
 <%
-    List<User> Liste = (List<User>) session.getAttribute("ListeUtilisateurs");
-    if (Liste != null) {
-        for (int i = 0; i < Liste.size(); i++) {
-            User u = Liste.get(i);
+    String url = "jdbc:mysql://localhost:3306/ma_base"; // remplace "ta_base" par ta base réelle
+    String username = "root";
+    String password = "";
+
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        conn = DriverManager.getConnection(url, username, password);
+
+        String sql = "SELECT id, nom, prenom, age FROM user";
+        stmt = conn.prepareStatement(sql);
+        rs = stmt.executeQuery();
+
+        while (rs.next()) {
 %>
     <tr>
-        <td><%= u.getNom() %></td>
-        <td><%= u.getPrenom() %></td>
-        <td><%= u.getAge() %></td>
+        <td><%= rs.getString("nom") %></td>
+        <td><%= rs.getString("prenom") %></td>
+        <td><%= rs.getInt("age") %></td>
         <td>
             <form action="SupprimerServlet" method="post"
                   onsubmit="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?');">
-                <input type="hidden" name="index" value="<%= i %>">
+                <input type="hidden" name="id" value="<%= rs.getInt("id") %>">
                 <input type="submit" value="Supprimer">
             </form>
         </td>
     </tr>
 <%
         }
-    } else {
+
+    } catch (Exception e) {
 %>
     <tr>
-        <td colspan="4" style="text-align:center;">Aucun utilisateur enregistré.</td>
+        <td colspan="4" style="text-align:center; color:red;">
+            Erreur lors de la récupération des données : <%= e.getMessage() %>
+        </td>
     </tr>
 <%
+    } finally {
+        if (rs != null) try { rs.close(); } catch (SQLException ignored) {}
+        if (stmt != null) try { stmt.close(); } catch (SQLException ignored) {}
+        if (conn != null) try { conn.close(); } catch (SQLException ignored) {}
     }
 %>
 
